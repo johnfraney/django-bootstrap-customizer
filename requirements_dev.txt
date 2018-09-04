@@ -1,0 +1,7 @@
+bumpversion==0.5.3
+twine==1.11.0
+wheel==0.31.1
+
+# Docs
+mkdocs==1.0.3
+mkdocs-material==3.0.4

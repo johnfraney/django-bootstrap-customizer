@@ -1,0 +1,7 @@
+site_name: 'Django Bootstrap Customizer'
+repo_name: 'johnfraney/django-bootstrap-customizer'
+repo_url: 'https://github.com/johnfraney/django-bootstrap-customizer'
+theme:
+  name: 'material'
+
+dev_addr: '127.0.0.1:8008'
