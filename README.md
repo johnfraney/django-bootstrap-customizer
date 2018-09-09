@@ -1,5 +1,8 @@
 # Django Bootstrap Customizer
 
+[![PyPI](https://img.shields.io/pypi/v/django-bootstrap-customizer.svg)](https://pypi.org/project/django-bootstrap-customizer/)
+[![PyPI](https://img.shields.io/pypi/pyversions/django-bootstrap-customizer.svg)](https://pypi.python.org/pypi/django-bootstrap-customizer/)
+
 Django Bootstrap Customizer lets you build a custom Bootstrap theme by creating `BootstrapTheme` models from the Django admin.
 
 `BootstrapTheme` values are converted to Bootstrap SCSS variables that are used to compile customized Bootstrap CSS when you save your theme, using [`libsass-python`](https://github.com/sass/libsass-python) under the hood.
