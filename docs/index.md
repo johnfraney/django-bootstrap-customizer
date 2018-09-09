@@ -29,7 +29,7 @@ Enjoy tailored Bootstrap CSS without having to set up a Node front-end assets pi
 
 Install Django Bootstrap Customizer:
 
-```bash
+```console
 pip install django-bootstrap-customizer
 ```
 
@@ -55,7 +55,7 @@ SITE_ID = 1
 
 Run migrations:
 
-```bash
+```console
 ./manage.py migrate bootstrap_customizer
 ```
 
@@ -76,7 +76,7 @@ Create a [`BootstrapTheme`](models.md#bootstraptheme) and [`SiteBootstrapTheme`]
 
 Add above-the-fold and below-the-fold CSS to your template:
 
-```html
+```html+django
 {% load bootstrap_customizer %}<!doctype html>
 <html lang="en">
 <head>

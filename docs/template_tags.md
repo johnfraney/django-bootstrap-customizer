@@ -4,7 +4,7 @@ The template tags in the library help get your customized Bootstrap CSS into you
 
 To use these template tags, be sure to load the `bootstrap_customizer` template tag library:
 
-```html
+```html+django
 {% load bootstrap_customizer %}
 ```
 
@@ -14,7 +14,7 @@ Outputs the CSS from the current site's `BootstrapTheme.css_above_the_fold` fiel
 
 ### Usage
 
-```html
+```html+django
 <style lang="css">{% bootstrap_theme_css_above_the_fold %}</style>
 ```
 
@@ -24,7 +24,7 @@ Outputs the CSS from the current site's `BootstrapTheme.css_below_the_fold` fiel
 
 ### Usage
 
-```html
+```html+django
 <style lang="css">{% bootstrap_theme_css_below_the_fold %}</style>
 ```
 
@@ -34,6 +34,6 @@ Outputs a URL to [`CSSBelowTheFoldView`](views.md#cssbelowthefoldview), using a 
 
 ### Usage
 
-```html
+```html+django
 <link rel="stylesheet" href="{% bootstrap_theme_css_below_the_fold_url %}">
 ```

@@ -29,7 +29,7 @@ MIDDLEWARE = [
 
 This middleware adds a `request.bootstrap_theme` attribute containing the current site's `BootstrapTheme`. We can use this to refresh the following cached template fragment so that we always see the most up-to-date version of our Bootstrap themes.
 
-```html
+```html+django
 {% load bootstrap_customizer cache %}
 
 <head>
@@ -57,7 +57,7 @@ Google [recommends](https://developers.google.com/speed/docs/insights/OptimizeCS
 
 Here's how to defer loading of below-the-fold CSS:
 
-```html
+```html+django
 <body>
   <!-- Adapted from https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery -->
   <noscript id="deferred-styles">

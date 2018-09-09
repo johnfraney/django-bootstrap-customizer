@@ -1,6 +1,7 @@
 site_name: 'Django Bootstrap Customizer'
 repo_name: 'johnfraney/django-bootstrap-customizer'
 repo_url: 'https://github.com/johnfraney/django-bootstrap-customizer'
+
 nav:
   - Home: index.md
   - Models: models.md
@@ -9,6 +10,17 @@ nav:
   - Middleware: middleware.md
   - Advanced Usage: advanced_usage.md
   - FAQ: faq.md
+dev_addr: '127.0.0.1:8008'
+
+# Copyright
+copyright: 'Copyright &copy; 2018 John Franey'
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/johnfraney'
+
+# Theme configuration
 theme:
   name: 'material'
   logo:
@@ -16,8 +28,12 @@ theme:
   palette:
     primary: 'deep purple'
     accent: 'indigo'
-  google_analytics:
-    - 'UA-125394319-2'
-    - 'auto'
 
-dev_addr: '127.0.0.1:8008'
+# Google Analytics
+google_analytics:
+  - 'UA-125394319-2'
+  - 'auto'
+
+# Extensions
+markdown_extensions:
+  - codehilite
