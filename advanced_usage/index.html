@@ -440,24 +440,25 @@
 <p>Critical, above-the-fold CSS is stored in a <code>BootstrapTheme</code>'s <code>css_above_the_fold</code> field.</p>
 <p>To improve load times and reduce database usage, the above-the-fold CSS should be inlined and placed in a <a href="https://docs.djangoproject.com/en/dev/topics/cache/#template-fragment-caching"><code>cache</code> template tag</a>.</p>
 <p>First, install the Django Bootstrap Customizer <code>BootstrapThemeMiddleware</code> middleware, after Django's <code>CurrentSiteMiddleware</code>:</p>
-<pre><code class="python">
-MIDDLEWARE = [
-    ...
-    'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    'bootstrap_customizer.middleware.BootstrapThemeMiddleware',
-    ...
-]
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;django.contrib.sites.middleware.CurrentSiteMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bootstrap_customizer.middleware.BootstrapThemeMiddleware&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+
 
 <p>This middleware adds a <code>request.bootstrap_theme</code> attribute containing the current site's <code>BootstrapTheme</code>. We can use this to refresh the following cached template fragment so that we always see the most up-to-date version of our Bootstrap themes.</p>
-<pre><code class="html">{% load bootstrap_customizer cache %}
+<div class="codehilite"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">bootstrap_customizer</span> <span class="nv">cache</span> <span class="cp">%}</span>
 
-&lt;head&gt;
-  {% cache 600 css-above-the-fold request.site request.bootstrap_theme.updated %}
-    &lt;style lang=&quot;css&quot;&gt;{% bootstrap_theme_css_above_the_fold %}&lt;/style&gt;
-  {% endcache %}
-&lt;/head&gt;
-</code></pre>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">cache</span> <span class="m">600</span> <span class="nv">css-above-the-fold</span> <span class="nv">request.site</span> <span class="nv">request.bootstrap_theme.updated</span> <span class="cp">%}</span>
+    <span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;css&quot;</span><span class="p">&gt;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_above_the_fold</span> <span class="cp">%}</span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">endcache</span> <span class="cp">%}</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</pre></div>
+
 
 <p>Let's look at the argments to the cache tag:</p>
 <table>
@@ -490,26 +491,26 @@ MIDDLEWARE = [
 <p>Non-critical, below-the-fold CSS is stored in a <code>BootstrapTheme</code>'s <code>css_below_the_fold</code> field and served via <code>bootstrap_customizer.views.CSSBelowTheFoldView</code>, which leverages <a href="https://docs.djangoproject.com/en/dev/topics/cache/#the-per-view-cache">view caching</a>.</p>
 <p>Google <a href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery#recommendations">recommends</a> using JavaScript to load below-the-fold CSS after the DOM has finished loading (i.e., after the <code>load</code> event has fired). This speed up page loads because "styles are applied to the page once it finishes loading, without blocking the initial render of the critical content."</p>
 <p>Here's how to defer loading of below-the-fold CSS:</p>
-<pre><code class="html">&lt;body&gt;
-  &lt;!-- Adapted from https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery --&gt;
-  &lt;noscript id=&quot;deferred-styles&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{% bootstrap_theme_css_below_the_fold_url %}&quot;&gt;
-  &lt;/noscript&gt;
-  &lt;script&gt;
-    var loadDeferredStyles = function() {
-      var addStylesNode = document.getElementById(&quot;deferred-styles&quot;);
-      var replacement = document.createElement(&quot;div&quot;);
-      replacement.innerHTML = addStylesNode.textContent;
-      document.body.appendChild(replacement)
-      addStylesNode.parentElement.removeChild(addStylesNode);
-    };
-    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-        webkitRequestAnimationFrame || msRequestAnimationFrame;
-    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-    else window.addEventListener('load', loadDeferredStyles);
-  &lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="c">&lt;!-- Adapted from https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">noscript</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;deferred-styles&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_below_the_fold_url</span> <span class="cp">%}</span><span class="s">&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">noscript</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">loadDeferredStyles</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">addStylesNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;deferred-styles&quot;</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+      <span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">addStylesNode</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">replacement</span><span class="p">)</span>
+      <span class="nx">addStylesNode</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">addStylesNode</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">raf</span> <span class="o">=</span> <span class="nx">requestAnimationFrame</span> <span class="o">||</span> <span class="nx">mozRequestAnimationFrame</span> <span class="o">||</span>
+        <span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span> <span class="nx">msRequestAnimationFrame</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">raf</span><span class="p">)</span> <span class="nx">raf</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">loadDeferredStyles</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="p">});</span>
+    <span class="k">else</span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">loadDeferredStyles</span><span class="p">);</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
                 
                   
                 
@@ -566,6 +567,10 @@ MIDDLEWARE = [
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 John Franey
+          </div>
+        
         powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
@@ -574,6 +579,13 @@ MIDDLEWARE = [
       </div>
       
         
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/johnfraney" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
       
     </div>
   </div>
@@ -587,6 +599,8 @@ MIDDLEWARE = [
       
     
     
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125394319-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

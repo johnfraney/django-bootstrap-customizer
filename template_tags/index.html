@@ -512,26 +512,29 @@
                 <h1 id="template-tags">Template Tags</h1>
 <p>The template tags in the library help get your customized Bootstrap CSS into your templates.</p>
 <p>To use these template tags, be sure to load the <code>bootstrap_customizer</code> template tag library:</p>
-<pre><code class="html">{% load bootstrap_customizer %}
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">bootstrap_customizer</span> <span class="cp">%}</span>
+</pre></div>
+
 
 <h2 id="bootstrap_theme_css_above_the_fold"><code>bootstrap_theme_css_above_the_fold</code></h2>
 <p>Outputs the CSS from the current site's <code>BootstrapTheme.css_above_the_fold</code> field as a string.</p>
 <h3 id="usage">Usage</h3>
-<pre><code class="html">&lt;style lang=&quot;css&quot;&gt;{% bootstrap_theme_css_above_the_fold %}&lt;/style&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;css&quot;</span><span class="p">&gt;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_above_the_fold</span> <span class="cp">%}</span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+
 
 <h2 id="bootstrap_theme_css_below_the_fold"><code>bootstrap_theme_css_below_the_fold</code></h2>
 <p>Outputs the CSS from the current site's <code>BootstrapTheme.css_below_the_fold</code> field as a string.</p>
 <h3 id="usage_1">Usage</h3>
-<pre><code class="html">&lt;style lang=&quot;css&quot;&gt;{% bootstrap_theme_css_below_the_fold %}&lt;/style&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;css&quot;</span><span class="p">&gt;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_below_the_fold</span> <span class="cp">%}</span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+
 
 <h2 id="bootstrap_theme_css_below_the_fold_url"><code>bootstrap_theme_css_below_the_fold_url</code></h2>
 <p>Outputs a URL to <a href="../views/#cssbelowthefoldview"><code>CSSBelowTheFoldView</code></a>, using a hash from the current site's <a href="../models/#bootstraptheme"><code>BootstrapTheme</code></a>.</p>
 <h3 id="usage_2">Usage</h3>
-<pre><code class="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;{% bootstrap_theme_css_below_the_fold_url %}&quot;&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_below_the_fold_url</span> <span class="cp">%}</span><span class="s">&quot;</span><span class="p">&gt;</span>
+</pre></div>
                 
                   
                 
@@ -588,6 +591,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 John Franey
+          </div>
+        
         powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
@@ -596,6 +603,13 @@
       </div>
       
         
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/johnfraney" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
       
     </div>
   </div>
@@ -609,6 +623,8 @@
       
     
     
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125394319-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

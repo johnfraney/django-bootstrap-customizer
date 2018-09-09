@@ -463,58 +463,62 @@
 </ul>
 <h2 id="quickstart">Quickstart</h2>
 <p>Install Django Bootstrap Customizer:</p>
-<pre><code class="bash">pip install django-bootstrap-customizer
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="go">pip install django-bootstrap-customizer</span>
+</pre></div>
+
 
 <p>Update settings:</p>
-<pre><code class="python">INSTALLED_APPS = (
-    ...
-    'django.contrib.sites',
-    'bootstrap_customizer',
-    ...
-)
+<div class="codehilite"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bootstrap_customizer&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
 
-MIDDLEWARE = (
-    ...
-    'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    'bootstrap_customizer.middleware.BootstrapThemeMiddleware',
-    ...
-)
+<span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;django.contrib.sites.middleware.CurrentSiteMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bootstrap_customizer.middleware.BootstrapThemeMiddleware&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
 
-SITE_ID = 1
-</code></pre>
+<span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
 
 <p>Run migrations:</p>
-<pre><code class="bash">./manage.py migrate bootstrap_customizer
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="go">./manage.py migrate bootstrap_customizer</span>
+</pre></div>
+
 
 <p>Add URL patterns:</p>
-<pre><code class="python">from bootstrap_customizer import urls as bootstrap_customizer_urls
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">bootstrap_customizer</span> <span class="kn">import</span> <span class="n">urls</span> <span class="k">as</span> <span class="n">bootstrap_customizer_urls</span>
 
 
-urlpatterns = [
-    ...
-    path('bootstrap_customizer/', include(bootstrap_customizer_urls)),
-    ...
-]
-</code></pre>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;bootstrap_customizer/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">bootstrap_customizer_urls</span><span class="p">)),</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+
 
 <p>Create a <a href="models/#bootstraptheme"><code>BootstrapTheme</code></a> and <a href="models/#sitebootstraptheme"><code>SiteBootstrapTheme</code></a> from the Django admin.</p>
 <p>Add above-the-fold and below-the-fold CSS to your template:</p>
-<pre><code class="html">{% load bootstrap_customizer %}&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
-  &lt;!-- Your head content --&gt;
-  &lt;style lang=&quot;css&quot;&gt;{% bootstrap_theme_css_above_the_fold %}&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Your body content --&gt;
-  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{% bootstrap_theme_css_below_the_fold_url %}&quot;&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">bootstrap_customizer</span> <span class="cp">%}&lt;!doctype html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;</span><span class="p">&gt;</span>
+  <span class="c">&lt;!-- Your head content --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;css&quot;</span><span class="p">&gt;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_above_the_fold</span> <span class="cp">%}</span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="c">&lt;!-- Your body content --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">bootstrap_theme_css_below_the_fold_url</span> <span class="cp">%}</span><span class="s">&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
                 
                   
                 
@@ -557,6 +561,10 @@ urlpatterns = [
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 John Franey
+          </div>
+        
         powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
@@ -565,6 +573,13 @@ urlpatterns = [
       </div>
       
         
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="./assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/johnfraney" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
       
     </div>
   </div>
@@ -578,6 +593,8 @@ urlpatterns = [
       
     
     
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125394319-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>
