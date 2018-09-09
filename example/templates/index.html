@@ -1,11 +1,13 @@
-{% load bootstrap_customizer %}<!doctype html>
+{% load bootstrap_customizer cache %}<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Bootstrap Customizer Example</title>
+  {% cache 600 css-above-the-fold request.site request.bootstrap_theme.updated %}
+    <style lang="css">{% bootstrap_theme_css_above_the_fold %}</style>
+  {% endcache %}
   <style lang="css">
-    {% bootstrap_theme_css_above_the_fold %}
     .min-height-5 {min-height: 5rem}
   </style>
 </head>
@@ -191,7 +193,7 @@
     </div>
   </section>
   <noscript id="deferred-styles">
-    <link rel="stylesheet" type="text/css" href="{% url 'bootstrap_customizer:bootstrap_css_below_the_fold' %}">
+    <link rel="stylesheet" type="text/css" href="{% bootstrap_theme_css_below_the_fold_url %}">
   </noscript>
   <script>
     var loadDeferredStyles = function() {
