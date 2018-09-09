@@ -57,12 +57,15 @@ class BootstrapTheme(models.Model):
     css_above_the_fold = models.TextField(blank=True, default='')
     css_below_the_fold = models.TextField(blank=True, default='')
 
+    updated = models.DateTimeField(auto_now=True)
+
     NON_SASS_FIELDS = [
         'css',
         'css_above_the_fold',
         'css_below_the_fold',
         'id',
         'name',
+        'updated',
     ]
 
     def clean(self):
@@ -87,6 +90,7 @@ class BootstrapTheme(models.Model):
 class SiteBootstrapTheme(models.Model):
     site = models.OneToOneField(Site, null=True, on_delete=models.SET_NULL)
     bootstrap_theme = models.ForeignKey(BootstrapTheme, on_delete=models.CASCADE)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'site Bootstrap theme'
