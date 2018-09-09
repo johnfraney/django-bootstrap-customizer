@@ -1,0 +1,23 @@
+// Custom variables
+{% for variable_name, value in scss_variables.items %}
+{{ variable_name|safe }}: {{ value|safe }};
+{% endfor %}
+
+// Core variables and mixins
+@import '{{ bootstrap_scss_folder_path }}/functions';
+@import '{{ bootstrap_scss_folder_path }}/variables';
+@import '{{ bootstrap_scss_folder_path }}/mixins';
+
+@import '{{ bootstrap_scss_folder_path }}/code';
+@import '{{ bootstrap_scss_folder_path }}/tables';
+@import '{{ bootstrap_scss_folder_path }}/button-group';
+@import '{{ bootstrap_scss_folder_path }}/card';
+@import '{{ bootstrap_scss_folder_path }}/breadcrumb';
+@import '{{ bootstrap_scss_folder_path }}/pagination';
+@import '{{ bootstrap_scss_folder_path }}/progress';
+@import '{{ bootstrap_scss_folder_path }}/list-group';
+@import '{{ bootstrap_scss_folder_path }}/close';
+@import '{{ bootstrap_scss_folder_path }}/modal';
+@import '{{ bootstrap_scss_folder_path }}/tooltip';
+@import '{{ bootstrap_scss_folder_path }}/popover';
+@import '{{ bootstrap_scss_folder_path }}/print';

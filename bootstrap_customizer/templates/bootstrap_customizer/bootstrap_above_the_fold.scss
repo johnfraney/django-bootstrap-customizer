@@ -1,0 +1,32 @@
+// Custom variables
+{% for variable_name, value in scss_variables.items %}
+{{ variable_name|safe }}: {{ value|safe }};
+{% endfor %}
+
+// Core variables and mixins
+@import '{{ bootstrap_scss_folder_path }}/functions';
+@import '{{ bootstrap_scss_folder_path }}/variables';
+@import '{{ bootstrap_scss_folder_path }}/mixins';
+
+@import '{{ bootstrap_scss_folder_path }}/root';
+@import '{{ bootstrap_scss_folder_path }}/reboot';
+@import '{{ bootstrap_scss_folder_path }}/type';
+@import '{{ bootstrap_scss_folder_path }}/images';
+@import '{{ bootstrap_scss_folder_path }}/grid';
+@import '{{ bootstrap_scss_folder_path }}/forms';
+@import '{{ bootstrap_scss_folder_path }}/buttons';
+
+// Components
+@import '{{ bootstrap_scss_folder_path }}/input-group';
+@import '{{ bootstrap_scss_folder_path }}/custom-forms';
+@import '{{ bootstrap_scss_folder_path }}/dropdown';
+@import '{{ bootstrap_scss_folder_path }}/nav';
+@import '{{ bootstrap_scss_folder_path }}/navbar';
+@import '{{ bootstrap_scss_folder_path }}/badge';
+@import '{{ bootstrap_scss_folder_path }}/jumbotron';
+@import '{{ bootstrap_scss_folder_path }}/alert';
+@import '{{ bootstrap_scss_folder_path }}/media';
+@import '{{ bootstrap_scss_folder_path }}/carousel';
+
+// Utility classes
+@import '{{ bootstrap_scss_folder_path }}/utilities';

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import BootstrapTheme
+from .models import BootstrapTheme, SiteBootstrapTheme
 
 
 @admin.register(BootstrapTheme)
@@ -9,7 +9,6 @@ class BootstrapThemeAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 'name',
-                'id',
             )
         }),
         ('Options', {
@@ -53,3 +52,8 @@ class BootstrapThemeAdmin(admin.ModelAdmin):
             )
         }),
     )
+
+
+@admin.register(SiteBootstrapTheme)
+class SiteBootstrapThemeAdmin(admin.ModelAdmin):
+    list_display = ('site', 'bootstrap_theme')
