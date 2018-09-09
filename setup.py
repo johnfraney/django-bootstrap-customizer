@@ -58,6 +58,9 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
+        'cssutils>=1.0.2',
+        'django-colorful>=1.3',
+        'libsass>=0.14.5',
     ],
     license="MIT",
     zip_safe=False,
@@ -66,6 +69,7 @@ setup(
         'Development Status :: 3 - Alpha',
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
+        'Framework :: Django :: 2.1',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
@@ -75,5 +79,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 )
