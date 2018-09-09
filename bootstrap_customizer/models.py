@@ -1,3 +1,4 @@
+import hashlib
 import sass
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
@@ -74,14 +75,18 @@ class BootstrapTheme(models.Model):
         except sass.CompileError as err:
             raise ValidationError(err)
 
-    class Meta:
-        verbose_name = 'Bootstrap theme'
-
     def save(self, *args, **kwargs):
         vendor_prefix_rules = extract_bootstrap_vendor_prefix_rules()
         self.css_above_the_fold = add_css_prefixes(generate_above_the_fold_css(self), vendor_prefix_rules)
         self.css_below_the_fold = add_css_prefixes(generate_below_the_fold_css(self), vendor_prefix_rules)
         super(BootstrapTheme, self).save(*args, **kwargs)
+
+    def get_hash(self):
+        unique_string = '{}-{}'.format(self.id, self.updated.timestamp())
+        return hashlib.md5(unique_string.encode()).hexdigest()
+
+    class Meta:
+        verbose_name = 'Bootstrap theme'
 
     def __str__(self):
         return self.name
