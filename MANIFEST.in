@@ -3,4 +3,6 @@ include CONTRIBUTING.md
 include HISTORY.md
 include LICENSE
 include README.md
-recursive-include bootstrap_customizer *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
+recursive-include bootstrap_customizer *.html *.png *.gif *js *.css *.scss *jpg *jpeg *svg *py
+recursive-include bootstrap_customizer/static *
+recursive-include bootstrap_customizer/templates *
