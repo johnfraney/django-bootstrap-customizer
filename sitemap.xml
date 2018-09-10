@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/models/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/template_tags/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/views/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/middleware/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/advanced_usage/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/example_site/</loc>
+     <lastmod>2018-09-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://johnfraney.github.io/django-bootstrap-customizer/faq/</loc>
      <lastmod>2018-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
