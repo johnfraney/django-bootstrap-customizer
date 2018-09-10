@@ -6,6 +6,7 @@
 ![PyPI](https://img.shields.io/pypi/djversions/django-bootstrap-customizer.svg)
 ![PyPI](https://img.shields.io/pypi/l/django-bootstrap-customizer.svg)
 ](https://pypi.org/project/django-bootstrap-customizer/)
+[![TravisCI](https://travis-ci.org/johnfraney/django-bootstrap-customizer.svg?branch=master)](https://travis-ci.org/johnfraney/django-bootstrap-customizer)
 
 
 Django Bootstrap Customizer lets you build a custom Bootstrap theme by creating `BootstrapTheme` models from the Django admin.
