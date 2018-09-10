@@ -28,6 +28,10 @@ Enjoy tailored Bootstrap CSS without having to set up a Node front-end assets pi
 Documentation is available in the [docs directory](./docs/index.md) and at https://johnfraney.github.io/django-bootstrap-customizer.
 
 
+## Screenshot
+
+![BootstrapTheme admin](docs/images/bootstraptheme-admin.png)
+
 ## Credits
 
 Tools used in rendering this package:

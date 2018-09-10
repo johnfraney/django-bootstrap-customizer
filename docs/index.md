@@ -91,3 +91,7 @@ Add above-the-fold and below-the-fold CSS to your template:
 </body>
 </html>
 ```
+
+## Screenshot
+
+![BootstrapTheme admin](images/bootstraptheme-admin.png)
