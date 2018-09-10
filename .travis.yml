@@ -4,6 +4,9 @@ language: python
 
 matrix:
   fast_finish: true
+  allow_failures:
+    - env: TOX_ENV=py37-django-21
+    - env: TOX_ENV=py37-django-20
   include:
     - name: "3.5 Unit Test - Django 2.1"
       python: "3.5"
@@ -31,17 +34,13 @@ matrix:
       env: TOX_ENV=py27-django-111
     - name: "3.4 Unit Test - Django 1.11"
       python: "3.4"
-      env: TOX_ENV=py34-django111
+      env: TOX_ENV=py34-django-111
     - name: "3.5 Unit Test - Django 1.11"
       python: "3.5"
-      env: TOX_ENV=py35-django111
+      env: TOX_ENV=py35-django-111
     - name: "3.6 Unit Test - Django 1.11"
       python: "3.6"
       env: TOX_ENV=py36-django-111
-
-  allow_failures:
-    - env: TOXENV=py37-django-21
-    - env: TOXENV=py37-django-20
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements_test.txt
