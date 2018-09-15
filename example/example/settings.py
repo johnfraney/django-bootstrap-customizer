@@ -24,7 +24,11 @@ SECRET_KEY = "11111111111111111111111111111111111111111111111111"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -122,7 +126,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# SITES
-# https://docs.djangoproject.com/en/2.1/ref/contrib/sites/#module-django.contrib.sites
-SITE_ID = 1

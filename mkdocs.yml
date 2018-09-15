@@ -1,4 +1,5 @@
 site_name: 'Django Bootstrap Customizer'
+site_url: 'https://johnfraney.github.io/django-bootstrap-customizer/'
 repo_name: 'johnfraney/django-bootstrap-customizer'
 repo_url: 'https://github.com/johnfraney/django-bootstrap-customizer'
 
@@ -9,6 +10,7 @@ nav:
   - Views: views.md
   - Middleware: middleware.md
   - Advanced Usage: advanced_usage.md
+  - Example Project: example_project.md
   - FAQ: faq.md
 dev_addr: '127.0.0.1:8008'
 

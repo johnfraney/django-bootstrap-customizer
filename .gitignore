@@ -58,5 +58,4 @@ docs/_build
 site/
 
 # Example app
-example/db.sqlite3
 example/env
