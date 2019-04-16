@@ -2,6 +2,7 @@ import cssutils
 import logging
 import os
 import sass
+from sys import platform
 from django.conf import settings
 from django.contrib.staticfiles import finders
 from django.template.loader import render_to_string
@@ -51,6 +52,8 @@ def generate_above_the_fold_css(theme):
     """
     context = get_scss_template_context(theme)
     scss_string = render_to_string('bootstrap_customizer/bootstrap_above_the_fold.scss', context)
+    if platform == "win32" or platform == "cygwin":
+        scss_string = scss_string.replace("\\", "/")
     return sass.compile(string=scss_string, output_style='compressed')
 
 
@@ -61,6 +64,8 @@ def generate_below_the_fold_css(theme):
     """
     context = get_scss_template_context(theme)
     scss_string = render_to_string('bootstrap_customizer/bootstrap_below_the_fold.scss', context)
+    if platform == "win32" or platform == "cygwin":
+        scss_string = scss_string.replace("\\", "/")
     return sass.compile(string=scss_string, output_style='compressed')
 
 
@@ -72,6 +77,8 @@ def generate_full_css(theme):
     sass_variables = convert_fields_to_scss_variables(theme)
     variable_section = '\n'.join('{}: {};'.format(key, value) for key, value in sass_variables.items())
     bootstrap_import_section = '@import "{}";'.format(finders.find('bootstrap/scss/bootstrap.scss'))
+    if platform == "win32" or platform == "cygwin":
+        bootstrap_import_section = bootstrap_import_section.replace("\\", "/")
     scss_string = '\n\n'.join([variable_section, bootstrap_import_section])
     return sass.compile(string=scss_string, output_style='compressed')
 
