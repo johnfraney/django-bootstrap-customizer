@@ -2,15 +2,24 @@ import cssutils
 import logging
 import os
 import sass
+from sys import platform
 from django.conf import settings
 from django.contrib.staticfiles import finders
 from django.template.loader import render_to_string
 
 
+# Constants for OS path separator
+POSIX_PATH_SEPARATOR = '/'
+WINDOWS_PATH_SEPARATOR = '\\'
+
 # Disable cssutils logging
 cssutils.log.setLevel(logging.FATAL)
 # Configure cssutils parsers to output minified CSS
 cssutils.ser.prefs.useMinified()
+
+
+def is_windows_environment():
+    return platform == 'win32' or platform == 'cygwin'
 
 
 def convert_fields_to_scss_variables(theme):
@@ -51,6 +60,8 @@ def generate_above_the_fold_css(theme):
     """
     context = get_scss_template_context(theme)
     scss_string = render_to_string('bootstrap_customizer/bootstrap_above_the_fold.scss', context)
+    if is_windows_environment():
+        scss_string = scss_string.replace(WINDOWS_PATH_SEPARATOR, POSIX_PATH_SEPARATOR)
     return sass.compile(string=scss_string, output_style='compressed')
 
 
@@ -61,6 +72,8 @@ def generate_below_the_fold_css(theme):
     """
     context = get_scss_template_context(theme)
     scss_string = render_to_string('bootstrap_customizer/bootstrap_below_the_fold.scss', context)
+    if is_windows_environment():
+        scss_string = scss_string.replace(WINDOWS_PATH_SEPARATOR, POSIX_PATH_SEPARATOR)
     return sass.compile(string=scss_string, output_style='compressed')
 
 
@@ -72,6 +85,8 @@ def generate_full_css(theme):
     sass_variables = convert_fields_to_scss_variables(theme)
     variable_section = '\n'.join('{}: {};'.format(key, value) for key, value in sass_variables.items())
     bootstrap_import_section = '@import "{}";'.format(finders.find('bootstrap/scss/bootstrap.scss'))
+    if is_windows_environment():
+        bootstrap_import_section = bootstrap_import_section.replace(WINDOWS_PATH_SEPARATOR, POSIX_PATH_SEPARATOR)
     scss_string = '\n\n'.join([variable_section, bootstrap_import_section])
     return sass.compile(string=scss_string, output_style='compressed')
 
