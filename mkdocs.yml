@@ -6,6 +6,7 @@ repo_url: 'https://github.com/johnfraney/django-bootstrap-customizer'
 nav:
   - Home: index.md
   - Models: models.md
+  - Management Commands: management_commands.md
   - Template Tags: template_tags.md
   - Views: views.md
   - Middleware: middleware.md

@@ -18,6 +18,7 @@ Enjoy tailored Bootstrap CSS without having to set up a Node front-end assets pi
 ## Pages
 
 - [Models](models.md)
+- [Management Commands](management_commands.md)
 - [Template Tags](template_tags.md)
 - [Views](views.md)
 - [Middleware](middleware.md)
@@ -72,7 +73,11 @@ urlpatterns = [
 ]
 ```
 
-Create a [`BootstrapTheme`](models.md#bootstraptheme) and [`SiteBootstrapTheme`](models.md#sitebootstraptheme) from the Django admin.
+Create a [`BootstrapTheme`](models.md#bootstraptheme) and [`SiteBootstrapTheme`](models.md#sitebootstraptheme) from the Django admin or use the management command:
+
+```console
+./manage.py create_default_bootstraptheme
+```
 
 Add above-the-fold and below-the-fold CSS to your template:
 
