@@ -18,7 +18,7 @@ Enjoy tailored Bootstrap CSS without having to set up a Node front-end assets pi
 
 ## Features
 
-* Bootstrap 4.
+* Bootstrap 5.
 * Generates optimized above-the-fold and below-the-fold CSS payloads, perfect for improving your site's [Google PageSpeed](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery) score.
 * Customized Bootstrap themes for each site in a [multi-site](https://docs.djangoproject.com/en/dev/ref/contrib/sites/#module-django.contrib.sites) installation.
 * No Node/NPM/Gulp/Webpack required.
